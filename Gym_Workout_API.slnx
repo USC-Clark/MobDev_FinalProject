@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="GymWorkOutAppUI/GymWorkoutAppUI.csproj" Id="72673570-b9b3-4e40-bceb-31876b897479">
+    <Deploy Solution="Debug|*" />
+  </Project>
+  <Project Path="Gym_Workout_API/Gym_Workout_API.csproj" />
+</Solution>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="GymWorkoutAppUI.Views.WorkoutPage"
+    Title="My Workouts"
+    BackgroundColor="#0A0A0A">
+
+    <Shell.TitleView>
+        <Label
+            Text="MY WORKOUTS"
+            TextColor="#FFD700"
+            FontAttributes="Bold"
+            FontSize="16"
+            CharacterSpacing="3"
+            VerticalOptions="Center" />
+    </Shell.TitleView>
+
+    <Grid RowDefinitions="Auto,*,Auto" BackgroundColor="#0A0A0A">
+
+        <BoxView Color="#FFD700" HeightRequest="3" Grid.Row="0" />
+
+        <RefreshView
+            x:Name="RefreshView"
+            RefreshColor="#FFD700"
+            Refreshing="OnRefreshing"
+            Grid.Row="1">
+            <CollectionView
+                x:Name="WorkoutCollectionView"
+                BackgroundColor="Transparent"
+                Margin="16,12">
+
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="12" Margin="0,60,0,0">
+                        <Label Text="🏋" FontSize="48" HorizontalOptions="Center" />
+                        <Label Text="No workouts yet" TextColor="#666666" FontSize="16" HorizontalOptions="Center" />
+                        <Label Text="Tap the button below to log your first session" TextColor="#444444" FontSize="13" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            BackgroundColor="#111111"
+                            StrokeThickness="1"
+                            Stroke="#222222"
+                            StrokeShape="RoundRectangle 10"
+                            Margin="0,0,0,10">
+                            <Grid ColumnDefinitions="8,*,Auto" HeightRequest="72">
+
+                                <BoxView Color="#FFD700" Grid.Column="0" />
+
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Padding="14,0" Spacing="4">
+                                    <Label
+                                        Text="{Binding WorkoutName}"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="White" />
+                                    <Label
+                                        Text="{Binding FormattedDate}"
+                                        FontSize="12"
+                                        TextColor="#666666" />
+                                    <Label
+                                        Text="{Binding Notes}"
+                                        FontSize="11"
+                                        TextColor="#444444"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="1"/>
+                                </VerticalStackLayout>
+
+                                <Label
+                                    Text="›"
+                                    FontSize="24"
+                                    TextColor="#FFD700"
+                                    VerticalOptions="Center"
+                                    Margin="0,0,16,0"
+                                    Grid.Column="2" />
+                            </Grid>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="OnWorkoutTapped"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </RefreshView>
+
+        <Button
+            Text="+ LOG NEW WORKOUT"
+            HeightRequest="54"
+            BackgroundColor="#FFD700"
+            TextColor="#0A0A0A"
+            FontAttributes="Bold"
+            FontSize="14"
+            CharacterSpacing="2"
+            CornerRadius="10"
+            Margin="20,0,20,24"
+            Clicked="OnAddWorkoutClicked"
+            Grid.Row="2" />
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="GymWorkoutAppUI.Views.RegisterPage"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="#0A0A0A">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <Grid HeightRequest="180" BackgroundColor="#0A0A0A">
+                <BoxView Color="#FFD700" HeightRequest="4" VerticalOptions="End" HorizontalOptions="Fill" />
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="6">
+                    <Label Text="⚡" FontSize="40" HorizontalOptions="Center" />
+                    <Label
+                        Text="CREATE ACCOUNT"
+                        FontSize="26"
+                        FontAttributes="Bold"
+                        TextColor="#FFD700"
+                        CharacterSpacing="4"
+                        HorizontalOptions="Center" />
+                    <Label
+                        Text="JOIN THE APEXFIT COMMUNITY"
+                        FontSize="10"
+                        TextColor="#888888"
+                        CharacterSpacing="2"
+                        HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <VerticalStackLayout Padding="28,32,28,28" Spacing="16">
+
+                <Label Text="YOUR DETAILS" FontSize="13" FontAttributes="Bold" TextColor="#FFD700" CharacterSpacing="4" />
+
+                <Border BackgroundColor="#161616" StrokeThickness="1" Stroke="#2A2A2A" StrokeShape="RoundRectangle 8">
+                    <Grid ColumnDefinitions="44,*" HeightRequest="52">
+                        <Label Text="👤" FontSize="18" TextColor="#555555" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" />
+                        <Entry
+                            x:Name="UsernameEntry"
+                            Placeholder="Username"
+                            PlaceholderColor="#444444"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="Center"
+                            Grid.Column="1" />
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#161616" StrokeThickness="1" Stroke="#2A2A2A" StrokeShape="RoundRectangle 8">
+                    <Grid ColumnDefinitions="44,*" HeightRequest="52">
+                        <Label Text="✉" FontSize="18" TextColor="#555555" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" />
+                        <Entry
+                            x:Name="EmailEntry"
+                            Placeholder="Email address"
+                            PlaceholderColor="#444444"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            Keyboard="Email"
+                            VerticalOptions="Center"
+                            Grid.Column="1" />
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#161616" StrokeThickness="1" Stroke="#2A2A2A" StrokeShape="RoundRectangle 8">
+                    <Grid ColumnDefinitions="44,*" HeightRequest="52">
+                        <Label Text="🔒" FontSize="18" TextColor="#555555" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" />
+                        <Entry
+                            x:Name="PasswordEntry"
+                            Placeholder="Password"
+                            PlaceholderColor="#444444"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            IsPassword="True"
+                            VerticalOptions="Center"
+                            Grid.Column="1" />
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#161616" StrokeThickness="1" Stroke="#2A2A2A" StrokeShape="RoundRectangle 8">
+                    <Grid ColumnDefinitions="44,*" HeightRequest="52">
+                        <Label Text="🔒" FontSize="18" TextColor="#555555" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" />
+                        <Entry
+                            x:Name="ConfirmPasswordEntry"
+                            Placeholder="Confirm password"
+                            PlaceholderColor="#444444"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            IsPassword="True"
+                            VerticalOptions="Center"
+                            Grid.Column="1" />
+                    </Grid>
+                </Border>
+
+                <Label x:Name="MessageLabel" FontSize="13" HorizontalOptions="Center" IsVisible="False" />
+
+                <Button
+                    x:Name="RegisterButton"
+                    Text="CREATE ACCOUNT"
+                    HeightRequest="54"
+                    BackgroundColor="#FFD700"
+                    TextColor="#0A0A0A"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    CharacterSpacing="3"
+                    CornerRadius="8"
+                    Clicked="OnRegisterClicked"
+                    Margin="0,8,0,0" />
+
+                <Button
+                    Text="BACK TO LOGIN"
+                    HeightRequest="54"
+                    BackgroundColor="Transparent"
+                    TextColor="#888888"
+                    FontSize="13"
+                    CharacterSpacing="2"
+                    Clicked="OnBackToLoginClicked" />
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

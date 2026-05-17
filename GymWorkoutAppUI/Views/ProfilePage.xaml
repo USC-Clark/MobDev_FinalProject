@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="GymWorkoutAppUI.Views.ProfilePage"
+    Title="Profile"
+    BackgroundColor="#0A0A0A">
+
+    <Shell.TitleView>
+        <Label
+            Text="PROFILE"
+            TextColor="#FFD700"
+            FontAttributes="Bold"
+            FontSize="16"
+            CharacterSpacing="3"
+            VerticalOptions="Center" />
+    </Shell.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <BoxView Color="#FFD700" HeightRequest="3" />
+
+            <VerticalStackLayout Padding="24,40,24,32" Spacing="10" HorizontalOptions="Center">
+                <Border
+                    BackgroundColor="#FFD700"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 50"
+                    WidthRequest="80"
+                    HeightRequest="80"
+                    HorizontalOptions="Center">
+                    <Label
+                        x:Name="AvatarLabel"
+                        Text="?"
+                        FontSize="36"
+                        FontAttributes="Bold"
+                        TextColor="#0A0A0A"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Border>
+                <Label x:Name="UsernameLabel" FontSize="22" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                <Label x:Name="EmailLabel" FontSize="14" TextColor="#666666" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Padding="20,0,20,24" Spacing="10">
+
+                <Label Text="ACCOUNT INFO" FontSize="11" TextColor="#FFD700" CharacterSpacing="4" FontAttributes="Bold" Margin="0,0,0,6" />
+
+                <Border BackgroundColor="#111111" StrokeThickness="1" Stroke="#222222" StrokeShape="RoundRectangle 10">
+                    <VerticalStackLayout Padding="16" Spacing="0">
+                        <Grid ColumnDefinitions="*,*" Padding="0,10">
+                            <Label Text="Username" TextColor="#666666" FontSize="13" Grid.Column="0" />
+                            <Label x:Name="UsernameCellLabel" TextColor="White" FontSize="13" HorizontalOptions="End" Grid.Column="1" />
+                        </Grid>
+                        <BoxView Color="#1E1E1E" HeightRequest="1" />
+                        <Grid ColumnDefinitions="*,*" Padding="0,10">
+                            <Label Text="Email" TextColor="#666666" FontSize="13" Grid.Column="0" />
+                            <Label x:Name="EmailCellLabel" TextColor="White" FontSize="13" HorizontalOptions="End" Grid.Column="1" />
+                        </Grid>
+                        <BoxView Color="#1E1E1E" HeightRequest="1" />
+                        <Grid ColumnDefinitions="*,*" Padding="0,10">
+                            <Label Text="User ID" TextColor="#666666" FontSize="13" Grid.Column="0" />
+                            <Label x:Name="UserIdLabel" TextColor="#444444" FontSize="13" HorizontalOptions="End" Grid.Column="1" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Button
+                    Text="LOG OUT"
+                    HeightRequest="54"
+                    BackgroundColor="Transparent"
+                    TextColor="#FF4444"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    CharacterSpacing="3"
+                    BorderColor="#FF4444"
+                    BorderWidth="1"
+                    CornerRadius="10"
+                    Clicked="OnLogoutClicked"
+                    Margin="0,16,0,0" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

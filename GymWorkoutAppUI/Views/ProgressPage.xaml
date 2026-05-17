@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="GymWorkoutAppUI.Views.ProgressPage"
+    Title="Progress Tracker"
+    BackgroundColor="#0A0A0A">
+
+    <Shell.TitleView>
+        <Label
+            Text="PROGRESS TRACKER"
+            TextColor="#FFD700"
+            FontAttributes="Bold"
+            FontSize="16"
+            CharacterSpacing="3"
+            VerticalOptions="Center" />
+    </Shell.TitleView>
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" BackgroundColor="#0A0A0A">
+
+        <BoxView Color="#FFD700" HeightRequest="3" Grid.Row="0" />
+
+        <Border
+            BackgroundColor="#111111"
+            StrokeThickness="1"
+            Stroke="#222222"
+            StrokeShape="RoundRectangle 12"
+            Margin="16,16,16,8"
+            Padding="16"
+            Grid.Row="1">
+            <VerticalStackLayout Spacing="12">
+                <Label Text="LOG BODY WEIGHT" FontSize="11" TextColor="#FFD700" CharacterSpacing="3" FontAttributes="Bold" />
+                <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+                    <Border BackgroundColor="#1A1A1A" StrokeThickness="1" Stroke="#2A2A2A" StrokeShape="RoundRectangle 8" Grid.Column="0">
+                        <Entry
+                            x:Name="WeightEntry"
+                            Placeholder="Weight (kg)"
+                            PlaceholderColor="#444444"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            Keyboard="Numeric"
+                            HeightRequest="46"
+                            Margin="12,0" />
+                    </Border>
+                    <Border BackgroundColor="#1A1A1A" StrokeThickness="1" Stroke="#2A2A2A" StrokeShape="RoundRectangle 8" Grid.Column="1">
+                        <DatePicker
+                            x:Name="LogDatePicker"
+                            Format="MM/dd"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            HeightRequest="46"
+                            Margin="8,0" />
+                    </Border>
+                    <Button
+                        Text="+"
+                        HeightRequest="46"
+                        WidthRequest="46"
+                        BackgroundColor="#FFD700"
+                        TextColor="#0A0A0A"
+                        FontAttributes="Bold"
+                        FontSize="22"
+                        CornerRadius="8"
+                        Clicked="OnAddLogClicked"
+                        Grid.Column="2" />
+                </Grid>
+                <Entry
+                    x:Name="LogNotesEntry"
+                    Placeholder="Notes (optional)"
+                    PlaceholderColor="#444444"
+                    TextColor="White"
+                    BackgroundColor="Transparent" />
+                <Label x:Name="LogMessageLabel" FontSize="12" IsVisible="False" />
+            </VerticalStackLayout>
+        </Border>
+        
+        <RefreshView
+            x:Name="RefreshView"
+            RefreshColor="#FFD700"
+            Refreshing="OnRefreshing"
+            Grid.Row="2">
+            <CollectionView
+                x:Name="LogCollectionView"
+                BackgroundColor="Transparent"
+                Margin="16,0">
+
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="12" Margin="0,40,0,0">
+                        <Label Text="📈" FontSize="48" HorizontalOptions="Center" />
+                        <Label Text="No progress logs yet" TextColor="#666666" FontSize="16" HorizontalOptions="Center" />
+                        <Label Text="Log your body weight above to start tracking" TextColor="#444444" FontSize="13" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            BackgroundColor="#111111"
+                            StrokeThickness="1"
+                            Stroke="#222222"
+                            StrokeShape="RoundRectangle 10"
+                            Margin="0,0,0,8">
+                            <Grid ColumnDefinitions="8,*,Auto" HeightRequest="60">
+                                <BoxView Color="#FFD700" Grid.Column="0" />
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Padding="14,0" Spacing="3">
+                                    <Label Text="{Binding WeightDisplay}" FontSize="18" FontAttributes="Bold" TextColor="White" />
+                                    <Label Text="{Binding FormattedDate}" FontSize="12" TextColor="#666666" />
+                                </VerticalStackLayout>
+                                <Label
+                                    Text="{Binding Notes}"
+                                    FontSize="11"
+                                    TextColor="#444444"
+                                    VerticalOptions="Center"
+                                    Margin="0,0,16,0"
+                                    Grid.Column="2"
+                                    MaxLines="2"
+                                    LineBreakMode="TailTruncation" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+
+</ContentPage>

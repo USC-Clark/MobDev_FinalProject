@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="GymWorkoutAppUI.Views.EditWorkoutPage"
+    Title="Edit Workout"
+    BackgroundColor="#0A0A0A">
+
+    <Shell.TitleView>
+        <Label
+            Text="EDIT WORKOUT"
+            TextColor="#FFD700"
+            FontAttributes="Bold"
+            FontSize="16"
+            CharacterSpacing="3"
+            VerticalOptions="Center" />
+    </Shell.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24,16,24,32" Spacing="20">
+
+            <BoxView Color="#FFD700" HeightRequest="3" Margin="-24,0" />
+
+            <Label Text="EDIT DETAILS" FontSize="11" TextColor="#FFD700" CharacterSpacing="4" FontAttributes="Bold" Margin="0,16,0,0" />
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="WORKOUT NAME" FontSize="10" TextColor="#666666" CharacterSpacing="2" />
+                <Border BackgroundColor="#161616" StrokeThickness="1" Stroke="#2A2A2A" StrokeShape="RoundRectangle 8">
+                    <Entry
+                        x:Name="WorkoutNameEntry"
+                        PlaceholderColor="#444444"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        HeightRequest="52"
+                        Margin="14,0" />
+                </Border>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="DATE" FontSize="10" TextColor="#666666" CharacterSpacing="2" />
+                <Border BackgroundColor="#161616" StrokeThickness="1" Stroke="#2A2A2A" StrokeShape="RoundRectangle 8">
+                    <DatePicker
+                        x:Name="WorkoutDatePicker"
+                        Format="MMMM dd, yyyy"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        HeightRequest="52"
+                        Margin="14,0" />
+                </Border>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="NOTES" FontSize="10" TextColor="#666666" CharacterSpacing="2" />
+                <Border BackgroundColor="#161616" StrokeThickness="1" Stroke="#2A2A2A" StrokeShape="RoundRectangle 8">
+                    <Editor
+                        x:Name="NotesEditor"
+                        PlaceholderColor="#444444"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        HeightRequest="120"
+                        Margin="14,8" />
+                </Border>
+            </VerticalStackLayout>
+
+            <Label x:Name="MessageLabel" FontSize="13" HorizontalOptions="Center" IsVisible="False" />
+
+            <Button
+                x:Name="UpdateButton"
+                Text="UPDATE WORKOUT"
+                HeightRequest="56"
+                BackgroundColor="#FFD700"
+                TextColor="#0A0A0A"
+                FontAttributes="Bold"
+                FontSize="15"
+                CharacterSpacing="2"
+                CornerRadius="10"
+                Clicked="OnUpdateWorkoutClicked"
+                Margin="0,12,0,0" />
+
+            <Button
+                x:Name="DeleteButton"
+                Text="DELETE WORKOUT"
+                HeightRequest="50"
+                BackgroundColor="Transparent"
+                TextColor="#FF4444"
+                FontAttributes="Bold"
+                FontSize="14"
+                CharacterSpacing="2"
+                BorderColor="#FF4444"
+                BorderWidth="1"
+                CornerRadius="10"
+                Clicked="OnDeleteWorkoutClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

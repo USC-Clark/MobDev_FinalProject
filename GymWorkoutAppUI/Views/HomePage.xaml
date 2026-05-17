@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="GymWorkoutAppUI.Views.HomePage"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="#0A0A0A">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <Grid
+                Padding="24,52,24,20"
+                BackgroundColor="#111111"
+                ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Grid.Column="0" Spacing="2">
+                    <Label Text="APEXFIT" FontSize="11" TextColor="#FFD700" CharacterSpacing="4" FontAttributes="Bold" />
+                    <Label x:Name="GreetingLabel" FontSize="22" TextColor="White" FontAttributes="Bold" />
+                    <Label x:Name="DateLabel" FontSize="12" TextColor="#666666" />
+                </VerticalStackLayout>
+                <Label
+                    Text="⚡"
+                    FontSize="32"
+                    TextColor="#FFD700"
+                    VerticalOptions="Center"
+                    Grid.Column="1" />
+            </Grid>
+
+            <BoxView Color="#FFD700" HeightRequest="3" />
+
+            <Grid
+                Padding="20,20,20,8"
+                ColumnDefinitions="*,*,*"
+                ColumnSpacing="12"
+                BackgroundColor="#0A0A0A">
+
+                <Border BackgroundColor="#111111" StrokeThickness="1" Stroke="#222222" StrokeShape="RoundRectangle 10" Grid.Column="0">
+                    <VerticalStackLayout Padding="12,14" Spacing="4" HorizontalOptions="Center">
+                        <Label x:Name="WorkoutCountLabel" Text="0" FontSize="26" FontAttributes="Bold" TextColor="#FFD700" HorizontalOptions="Center" />
+                        <Label Text="WORKOUTS" FontSize="9" TextColor="#666666" CharacterSpacing="2" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border BackgroundColor="#111111" StrokeThickness="1" Stroke="#222222" StrokeShape="RoundRectangle 10" Grid.Column="1">
+                    <VerticalStackLayout Padding="12,14" Spacing="4" HorizontalOptions="Center">
+                        <Label x:Name="LogCountLabel" Text="0" FontSize="26" FontAttributes="Bold" TextColor="#FFD700" HorizontalOptions="Center" />
+                        <Label Text="LOGS" FontSize="9" TextColor="#666666" CharacterSpacing="2" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border BackgroundColor="#111111" StrokeThickness="1" Stroke="#222222" StrokeShape="RoundRectangle 10" Grid.Column="2">
+                    <VerticalStackLayout Padding="12,14" Spacing="4" HorizontalOptions="Center">
+                        <Label x:Name="WeightLabel" Text="—" FontSize="26" FontAttributes="Bold" TextColor="#FFD700" HorizontalOptions="Center" />
+                        <Label Text="KG" FontSize="9" TextColor="#666666" CharacterSpacing="2" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+
+            <VerticalStackLayout Padding="20,12,20,28" Spacing="12">
+
+                <Label Text="QUICK ACTIONS" FontSize="11" TextColor="#444444" CharacterSpacing="4" Margin="0,8,0,4" />
+
+                <Border BackgroundColor="#111111" StrokeThickness="1" Stroke="#222222" StrokeShape="RoundRectangle 12">
+                    <Grid ColumnDefinitions="56,*,32" HeightRequest="64">
+                        <BoxView Color="#FFD700" WidthRequest="4" HorizontalOptions="Start" VerticalOptions="Fill" Grid.Column="0" />
+                        <Label
+                            Text="🏋"
+                            FontSize="26"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Grid.Column="0" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                            <Label Text="MY WORKOUTS" FontSize="14" FontAttributes="Bold" TextColor="White" CharacterSpacing="1" />
+                            <Label Text="View and manage your sessions" FontSize="11" TextColor="#666666" />
+                        </VerticalStackLayout>
+                        <Label Text="›" FontSize="22" TextColor="#FFD700" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnWorkoutListTapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#111111" StrokeThickness="1" Stroke="#222222" StrokeShape="RoundRectangle 12">
+                    <Grid ColumnDefinitions="56,*,32" HeightRequest="64">
+                        <BoxView Color="#FFD700" WidthRequest="4" HorizontalOptions="Start" VerticalOptions="Fill" Grid.Column="0" />
+                        <Label
+                            Text="➕"
+                            FontSize="24"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Grid.Column="0" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                            <Label Text="LOG WORKOUT" FontSize="14" FontAttributes="Bold" TextColor="White" CharacterSpacing="1" />
+                            <Label Text="Record a new session" FontSize="11" TextColor="#666666" />
+                        </VerticalStackLayout>
+                        <Label Text="›" FontSize="22" TextColor="#FFD700" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAddWorkoutTapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#111111" StrokeThickness="1" Stroke="#222222" StrokeShape="RoundRectangle 12">
+                    <Grid ColumnDefinitions="56,*,32" HeightRequest="64">
+                        <BoxView Color="#FFD700" WidthRequest="4" HorizontalOptions="Start" VerticalOptions="Fill" Grid.Column="0" />
+                        <Label
+                            Text="📈"
+                            FontSize="24"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Grid.Column="0" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                            <Label Text="PROGRESS TRACKER" FontSize="14" FontAttributes="Bold" TextColor="White" CharacterSpacing="1" />
+                            <Label Text="Track your body weight logs" FontSize="11" TextColor="#666666" />
+                        </VerticalStackLayout>
+                        <Label Text="›" FontSize="22" TextColor="#FFD700" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProgressTapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#111111" StrokeThickness="1" Stroke="#222222" StrokeShape="RoundRectangle 12">
+                    <Grid ColumnDefinitions="56,*,32" HeightRequest="64">
+                        <BoxView Color="#333333" WidthRequest="4" HorizontalOptions="Start" VerticalOptions="Fill" Grid.Column="0" />
+                        <Label
+                            Text="👤"
+                            FontSize="24"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Grid.Column="0" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                            <Label Text="PROFILE" FontSize="14" FontAttributes="Bold" TextColor="White" CharacterSpacing="1" />
+                            <Label Text="Your account details" FontSize="11" TextColor="#666666" />
+                        </VerticalStackLayout>
+                        <Label Text="›" FontSize="22" TextColor="#FFD700" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProfileTapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <Button
+                    Text="LOG OUT"
+                    HeightRequest="50"
+                    BackgroundColor="Transparent"
+                    TextColor="#444444"
+                    FontSize="12"
+                    CharacterSpacing="3"
+                    BorderColor="#222222"
+                    BorderWidth="1"
+                    CornerRadius="8"
+                    Clicked="OnLogoutClicked"
+                    Margin="0,8,0,0" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
